@@ -1,0 +1,11 @@
+#middle-box
+{
+    z-index: 5;
+}
+
+#demo-info
+{
+    background: rgba(7, 31, 51, 0.7);
+    padding: 10px;
+    color: white;
+}

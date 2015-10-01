@@ -34,26 +34,6 @@ const css = async () => {
   await fs.writeFile('build/css/main.min.css', output);
 };
 
-// Compile HTML pages for the documentation site
-const html = async () => {
-  let source;
-  let output;
-  const toUrl = filename => filename === 'index.md' ? '/' :
-    filename.substr(0, filename.length - (filename.endsWith('index.md') ? 8 : 3));
-  const files = await fs.getFiles('docs');
-  for (const file of files) {
-    if (file.endsWith('.md')) {
-      source = await fs.readFile('docs/' + file);
-      output = await compile.md(source, {
-        root: rootDir,
-        url: toUrl(file),
-        fileName: '/docs/' + file,
-      });
-      await fs.writeFile('build/' + file.substr(0, file.length - 3) + '.html', output);
-    }
-  }
-};
-
 // Bundle and optimize JavaScript code for the documentation site
 const javascript = async () => {
   const output = await compile.js({ debug: false });
@@ -92,8 +72,6 @@ export default async () => {
     await src();
     console.log('Compiling CSS...');
     await css();
-    console.log('Compiling HTML...');
-    await html();
     console.log('Compiling JavaScript');
     await javascript();
     console.log('Copying library files...');

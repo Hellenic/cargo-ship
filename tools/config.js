@@ -1,3 +1,3 @@
 export default {
-  rootDir: '/demoscene-engine/',
+  rootDir: '/CargoShip/',
 };

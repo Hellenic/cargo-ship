@@ -1,23 +1,44 @@
 @import './variables.css';
 /* TODO These should be in engine itself, not here. Somehow overridable */
 @import './demoscene.css';
+@import './demomenu.css';
+@import './mainmenu.css';
 
 /* TODO Would be great to load these only when the module is activated */
-@import './stats.css';
 @import './progress.css';
+@import './stats.css';
 
-body {
-    padding-top: 20px;
+html, body
+{
+    width: 100%;
+    height: 100%;
 }
 
-.demo-wrapper {
-    border: 1px grey dashed;
-    min-height: 100px;
-    min-width: 100px;
-    border-radius: 25px;
-    padding: 5px;
+body
+{
+    margin: 0px;
+    overflow: hidden;
+    height: 100%;
+
+    font-family: "Fondamento", Arial, Helvetica;
+    color: #1F1F7A;
+}
+
+.float-container
+{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.float-content
+{
+    width: 100%;
+    min-width: 600px;
+    max-width: 1500px;
     text-align: center;
-}
-#demoscreen {
-
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

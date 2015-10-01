@@ -9,7 +9,7 @@ Glacier.init = function()
 {
 	// Scene-specific settings
 	this.settings = {width: 400, height: 300};
-	
+
 	this.createScene();
 
 	// Make the controls and add the object (character) to scene

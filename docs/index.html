@@ -3,10 +3,13 @@
 <head lang="en">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%- title %></title>
+    <title>Cargo Ship - Interactive demo (prototype)</title>
 
-    <meta name="description" content="Demoscene engine is a framework to build your own WebGL demos or games">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="application-name" content="Cargo Ship – Interactive Demo" />
+    <meta name="description" content="Cargo Ship is an interactive demo where you can move around and explore the surrounding world." />
+    <meta name="keywords" content="cargo ship, demo, demoscene, demoscene engine, blankpace, hk" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -14,45 +17,36 @@
 
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700italic">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%- root %>css/main.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
 </head>
 <body>
+    <div id="demoscreen"></div>
 
-    <!--[if lt IE 10]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+    <div id="stats"></div>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li <% if (url === '/') { %> class="active" <% } %>>
-                        <a href="/">Home</a>
-                    </li>
-                    <li <% if (url === '/getting-started') { %> class="active" <% } %>>
-                        <a href="getting-started">Getting started</a>
-                    </li>
-                </ul>
-            </div><!--/.nav-collapse -->
+    <div id="debug"></div>
+
+    <div id="middle-box" class="float-container" style="display:none;">
+        <div id="demo-info" class="float-content">
+            <h2>Click the game to start</h2>
+            <p class="small">
+                Your mouse pointer will be disabled once you click.
+                You can release it by pressing ESC.
+            </p>
         </div>
-    </nav>
-
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Demoscene engine</h1>
-            <p class="lead">Use this engine and example to get quickly started with your WebGL demos – or even games!</p>
-            <p><small>2015-09-26 &nbsp; | &nbsp; v0.1.0 - Hannu Kärkkäinen</small></p>
+        <div id="notification" class="float-content">
+            <h2></h2>
+            <p></p>
         </div>
-    </div><!-- /.container -->
+    </div>
 
-    <% if (url === '/') { %>
-    <!-- Demoscene Engine demonstrative content begins here -->
+    <div id="menu" class="float-container">
+        <div class="float-content">
+            <div>
+                <h1>The Cargo Ship</h1>
+                <h3>Interactive demo</h3>
+            </div>
 
-        <!-- Module demonstration -->
-        <div class="container demo-wrapper">
-            <h2>Simple example of the Demoscene engine in action</h2>
-
-            <!-- [Built-in] Notifications if browser doesn't support required features -->
             <div id="support">
                 <p data-api="webgl">Your browser doesn't seem to support WebGL.</p>
                 <p data-api="pointerlock">Your browser doesn't seem to support Pointer Lock API.</p>
@@ -63,13 +57,8 @@
                 </noscript>
             </div>
 
-            <!-- [Built-in] Notifications sent by triggers and such -->
-            <div id="notification" class="float-content">
-                <h2></h2>
-                <p></p>
-            </div>
+            <button id="button-play" type="button" disabled="disabled">Play</button>
 
-            <!-- [Module: progress] Progress bar -->
             <div id="progress">
                 <div id="progressbar">
                     <div class="progress-file"></div>
@@ -81,25 +70,83 @@
                 <div data-state="done" data-show="#instructions">Done loading.</div>
             </div>
 
-            <!-- Actual Demoscene canvas container -->
-            <div id="demoscreen">
+            <div class="tab-container">
+                <button id="button-settings" type="button">Settings</button>
+                <button id="button-info" type="button" class="active">Information</button>
+                <button id="button-credits" type="button">Credits</button>
+
+                <div class="info-area">
+                    <div id="settings" style="display:none;">
+                        <p>
+                            Settings will be here once there is a need for them.
+                        </p>
+                    </div>
+
+                    <div id="instructions">
+                        <p>
+                            W, A, S, D = Move, SPACE = Interact, MOUSE = Look around<br />
+                            ESC to release the mouse pointer
+                        </p>
+                        <p>
+                            Development version // 1st Oct 2015 // Size ~12.6 MB<br />
+                            Working on: Nothing at the moment.
+                        </p>
+                        <p>
+                            Read more about the game <a href="http://blog.blankpace.net/2015/01/cargo-ship-demo.html">on my blog</a>.
+                            Implemented with my <a href="http://blankpace.net/demoscene-engine/">custom DemoScene engine</a>.
+                        </p>
+                    </div>
+
+                    <div id="credits" style="display:none;">
+                        <p>
+                            Powered by
+                            <a href="http://threejs.org/">Three.js</a> and
+                            <a href="http://chandlerprall.github.io/Physijs/">Physijs</a>.
+
+                            Big thanks!
+                        </p>
+
+                        <h3>Credits:</h3>
+                        <h4>Background image</h4>
+                        <ul>
+                            <li>Kvenh - http://veikkasomerma.com/</li>
+                        </ul>
+
+                        <h4>Software</h4>
+                        <ul>
+                            <li>Blender - http://www.blender.org/</li>
+                            <li>Three.js - http://threejs.org/</li>
+                            <li>Physijs - http://chandlerprall.github.io/Physijs/</li>
+                            <li>jQuery - http://jquery.com/</li>
+                        </ul>
+
+                        <h4>Textures</h4>
+                        <ul>
+                            <li>Wood textures - http://webtreatsetc.deviantart.com/</li>
+                            <li>Bark textures - http://00angelicdevil00.deviantart.com/</li>
+                            <li>Rusty textures - http://sdwhaven.deviantart.com/</li>
+                            <li>http://juuichimei.deviantart.com/</li>
+                            <li>Other textures - http://pixabay.com/</li>
+                        </ul>
+
+                        <h4>Shaders</h4>
+                        <ul>
+                            <li>https://github.com/ashima/webgl-noise</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+
         </div>
-
-        <!-- Demoscene Engine depends on jQuery and Three.JS -->
-        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.min.js"></script>
-
-        <!-- Demo specific configuration and scene setup -->
-        <script src="<%- root %>js/main.min.js"></script>
-
-    <!-- End of demo content -->
-    <% } %>
-
-    <div class="container">
-        <%= body %>
     </div>
+
+    <!-- Demoscene Engine depends on jQuery and Three.JS -->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.min.js"></script>
+
+    <!-- Demo specific configuration and scene setup -->
+    <script src="js/main.min.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>

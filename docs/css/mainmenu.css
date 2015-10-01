@@ -1,87 +1,3 @@
-html, body
-{
-    width: 100%;
-    height: 100%;
-}
-
-body
-{
-    margin: 0px;
-    overflow: hidden;
-    height: 100%;
-
-    font-family: "Fondamento", Arial, Helvetica;
-    color: #1F1F7A;
-}
-
-.float-container
-{
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-}
-.float-content
-{
-    width: 100%;
-    min-width: 600px;
-    max-width: 1500px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-#stats
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-#debug
-{
-    z-index: 5;
-    text-align: right;
-    color: white;
-    margin-right: 10px;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-#demoscreen
-{
-
-}
-
-#support
-{
-    background: rgba(7, 31, 51, 0.7);
-    padding: 10px;
-    color: red;
-    z-index: 10;
-}
-
-#middle-box
-{
-    z-index: 5;
-}
-
-#demo-info
-{
-    background: rgba(7, 31, 51, 0.7);
-    padding: 10px;
-    color: white;
-}
-#notification
-{
-    background: rgba(7, 31, 51, 0.7);
-    padding: 10px;
-    color: white;
-}
-
 #menu
 {
     height: 100%;
@@ -116,7 +32,7 @@ body
 {
     width: 500px;
     height: 75px;
-    
+
     background-color: rgba(7, 31, 51, 0.5);
     border-top: 2px solid #666699;
 
@@ -159,40 +75,6 @@ body
     background-color: rgba(7, 31, 51, 0.3);
 }
 
-#progress
-{
-    width: 80%;
-    margin-left: 10%;
-    margin-bottom: 20px;
-    padding: 5px;
-    padding-right: 8px;
-
-    border: 2px solid #F5F6F6;
-    border-radius: 5px;
-}
-#progressbar
-{
-
-}
-.progress-file
-{
-
-}
-.progress-percent
-{
-
-}
-.progress-percent:after
-{
-    content: " %";
-}
-.progress-width
-{
-    border: 2px solid #B8BAC6;
-    border-radius: 25px;
-    background-color: #F5F6F6;
-}
-
 .info-area
 {
     background-color: rgba(7, 31, 51, 0.5);
@@ -205,6 +87,7 @@ body
 
 #instructions
 {
+
 }
 
 #credits
