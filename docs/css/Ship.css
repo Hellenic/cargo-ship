@@ -1,0 +1,213 @@
+html, body
+{
+    width: 100%;
+    height: 100%;
+}
+
+body
+{
+    margin: 0px;
+    overflow: hidden;
+    height: 100%;
+
+    font-family: "Fondamento", Arial, Helvetica;
+    color: #1F1F7A;
+}
+
+.float-container
+{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.float-content
+{
+    width: 100%;
+    min-width: 600px;
+    max-width: 1500px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#stats
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#debug
+{
+    z-index: 5;
+    text-align: right;
+    color: white;
+    margin-right: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#demoscreen
+{
+
+}
+
+#support
+{
+    background: rgba(7, 31, 51, 0.7);
+    padding: 10px;
+    color: red;
+    z-index: 10;
+}
+
+#middle-box
+{
+    z-index: 5;
+}
+
+#demo-info
+{
+    background: rgba(7, 31, 51, 0.7);
+    padding: 10px;
+    color: white;
+}
+#notification
+{
+    background: rgba(7, 31, 51, 0.7);
+    padding: 10px;
+    color: white;
+}
+
+#menu
+{
+    height: 100%;
+
+    background: #071f33; /* Old browsers */
+    background: -moz-linear-gradient(top,  #071f33 1%, #120738 35%, #000000 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#071f33), color-stop(35%,#120738), color-stop(100%,#000000));
+    background: -webkit-linear-gradient(top,  #071f33 1%,#120738 35%,#000000 100%);
+    background: -o-linear-gradient(top,  #071f33 1%,#120738 35%,#000000 100%);
+    background: -ms-linear-gradient(top,  #071f33 1%,#120738 35%,#000000 100%);
+    background: linear-gradient(to bottom,  #071f33 1%,#120738 35%,#000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#071f33', endColorstr='#000000',GradientType=0 );
+
+    z-index: 20;
+    color: white;
+}
+#menu .float-content
+{
+    padding-top: 20px;
+
+    height: 99%;
+    max-height: 750px;
+    background: #000000 url("../img/ship.jpg") top center no-repeat;
+
+    /*
+    box-sizing: border-box;
+    box-shadow: 5px 5px 20px 20px rgba(7, 31, 51, 0.9) inset;
+    */
+}
+
+#button-play
+{
+    width: 500px;
+    height: 75px;
+    
+    background-color: rgba(7, 31, 51, 0.5);
+    border-top: 2px solid #666699;
+
+    font-size: 1.5em;
+    color: #EEEEFF;
+
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid #666699;
+    border-radius: 5px;
+}
+#button-play:hover
+{
+    background-color: rgba(7, 31, 51, 0.8);
+}
+
+#menu .tab-container button
+{
+    width: 300px;
+    height: 50px;
+
+    background-color: rgba(7, 31, 51, 0.5);
+
+    font-size: 1.5em;
+    color: #EEEEFF;
+
+    margin: 0px;
+    padding: 5px;
+    border-top: 2px solid #666699;
+    border-left: 2px solid #666699;
+    border-right: 2px solid #666699;
+    border-bottom: 0px;
+}
+#menu .tab-container button.active
+{
+    background-color: rgba(7, 31, 51, 0.8);
+}
+#menu .tab-container button:hover
+{
+    background-color: rgba(7, 31, 51, 0.3);
+}
+
+#progress
+{
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 20px;
+    padding: 5px;
+    padding-right: 8px;
+
+    border: 2px solid #F5F6F6;
+    border-radius: 5px;
+}
+#progressbar
+{
+
+}
+.progress-file
+{
+
+}
+.progress-percent
+{
+
+}
+.progress-percent:after
+{
+    content: " %";
+}
+.progress-width
+{
+    border: 2px solid #B8BAC6;
+    border-radius: 25px;
+    background-color: #F5F6F6;
+}
+
+.info-area
+{
+    background-color: rgba(7, 31, 51, 0.5);
+    height: 382px;
+    max-height: 382px;
+    margin-bottom: 20px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#instructions
+{
+}
+
+#credits
+{
+
+}

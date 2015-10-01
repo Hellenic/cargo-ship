@@ -1,46 +1,47 @@
 'use strict';
 
 import 'babel/polyfill';
+import './mainmenu.js';
 
-/**
-Example configuration how to use the DemoScene engine
-*/
 // For development purposes
 import DemoScene from '../../src/DemoScene';
 // For release
 //import DemoScene from '../lib/DemoScene';
 
-// You can give properties in a constructor
-var exampleDemo = new DemoScene({}, '../lib/');
+var cargoship = new DemoScene({}, '../lib/');
 
-// Or you can give them via method, they will be merged
-exampleDemo.setProperties({
-    // These will switch on the modules we want to use
-    controls: false, // TODO Controls
+cargoship.setProperties({
+    controls: true,
     pointerlock: true,
-    audio: true
+    audio: true,
+    stats: true,
+    debug: true
 });
 
-// TODO Add module somehow like this:
-// DemoScene.enableModule('progress', {config: data});
-
-// Load some generic scripts. Could be custom physics engine, for example.
-exampleDemo.addGenericScript("Triggers", "js/triggers.js", false);
+cargoship.addGenericScript("Physijs", "js/physijs/physi.js", true);
+cargoship.addGenericScript("Triggers", "js/triggers.js", false);
 
 // Add scene
-exampleDemo.addScene({
+cargoship.addScene({
     shaders: [
         {name: "basic.vs", file: "shaders/basic.vs.glsl"},
-        {name: "basic.fs", file: "shaders/basic.fs.glsl"}
+        {name: "basic.fs", file: "shaders/basic.fs.glsl"},
+        {name: "snow.vs", file: "shaders/snow.vs.glsl"},
+        {name: "snow.fs", file: "shaders/snow.fs.glsl"}
     ],
     models: [
+        {name: "Freighter",     file: "models/Freighter.js"},
+        {name: "FishingShack",  file: "models/FishingShack.js"},
         {name: "Character",     file: "models/Character.js"},
-        {name: "ShaderBox",     file: "models/ShaderBox.js"}
+        {name: "Ground",        file: "models/Ground.js"},
+        {name: "ShaderBox",     file: "models/ShaderBox.js"},
+        {name: "Snowfall",      file: "models/Snowfall.js"},
+        {name: "Mai",           file: "models/Mai.js"}
     ],
-    scene: {name: "Example", file: "scenes/Example.js"},
+    scene: {name: "Glacier", file: "scenes/Glacier.js"},
     initial: false
 });
 
 $(document).ready(function() {
-    exampleDemo.start();
+    cargoship.start();
 });

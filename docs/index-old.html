@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="application-name" content="Cargo Ship – Interactive Demo" />
+		<meta name="description" content="Cargo Ship is an interactive demo where you can move around and explore the surrounding world." />
+		<meta name="keywords" content="cargo ship, demo, demoscene, demoscene engine, blankpace, hk" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<base href="" />
+
+		<title>Cargo Ship - Interactive demo (prototype)</title>
+
+		<link rel="stylesheet" type="text/css" href="css/Ship.css"/>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r72/three.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.20/require.min.js"></script>
+
+		<script type="text/javascript" src="../DemoSystem/r07/utils/DemoUtils.js"></script>
+		<script type="text/javascript" src="../DemoSystem/r07/DemoLoader.js"></script>
+		<script type="text/javascript" src="../DemoSystem/r07/DemoScene.js"></script>
+		<script type="text/javascript" src="../DemoSystem/r07/extend/Progress.js"></script>
+
+		<script type="text/javascript" src="js/MainMenu.js"></script>
+		<script type="text/javascript" src="js/SceneConfiguration.js"></script>
+
+	</head>
+	<body>
+		<div id="demoscreen"></div>
+
+		<div id="stats"></div>
+
+		<div id="debug"></div>
+
+		<div id="middle-box" class="float-container" style="display:none;">
+			<div id="demo-info" class="float-content">
+				<h2>Click the game to start</h2>
+				<p class="small">
+					Your mouse pointer will be disabled once you click.
+					You can release it by pressing ESC.
+				</p>
+			</div>
+			<div id="notification" class="float-content">
+				<h2></h2>
+				<p></p>
+			</div>
+		</div>
+
+		<div id="menu" class="float-container">
+			<div class="float-content">
+				<div>
+					<h1>The Cargo Ship</h1>
+					<h3>Interactive demo</h3>
+				</div>
+
+				<div id="support">
+					<p data-api="webgl">Your browser doesn't seem to support WebGL.</p>
+					<p data-api="pointerlock">Your browser doesn't seem to support Pointer Lock API.</p>
+
+					<noscript>
+						You will need to enable your JavaScript in order to experience this.
+						For further help you can visit: <a href="http://www.enable-javascript.com/">http://www.enable-javascript.com/</a>
+					</noscript>
+				</div>
+
+				<button id="button-play" type="button" disabled="disabled">Play</button>
+
+				<div id="progress">
+					<div id="progressbar">
+						<div class="progress-file"></div>
+						<div class="progress-percent">0</div>
+						<div class="progress-width">&nbsp;</div>
+					</div>
+					<div data-state="before">Preparing to load...</div>
+					<div data-state="loading">Loading... Please wait.</div>
+					<div data-state="done" data-show="#instructions">Done loading.</div>
+				</div>
+
+				<div class="tab-container">
+					<button id="button-settings" type="button">Settings</button>
+					<button id="button-info" type="button" class="active">Information</button>
+					<button id="button-credits" type="button">Credits</button>
+
+					<div class="info-area">
+						<div id="settings" style="display:none;">
+							<p>
+								Settings will be here once there is a need for them.
+							</p>
+						</div>
+
+						<div id="instructions">
+							<p>
+								W, A, S, D = Move, SPACE = Interact, MOUSE = Look around<br />
+								ESC to release the mouse pointer
+							</p>
+							<p>
+								Development version // 26th Sep 2015 // Size ~12.6 MB<br />
+								Working on: Project foundings refactoring
+							</p>
+							<p>
+								Read more about the game <a href="http://blog.blankpace.net/2015/01/cargo-ship-demo.html">on my blog</a>.
+								Implemented with my <a href="http://blankpace.net/demoscene-engine/">custom DemoScene engine</a>.
+							</p>
+						</div>
+
+						<div id="credits" style="display:none;">
+							<p>
+								Powered by
+								<a href="http://threejs.org/">Three.js</a> and
+								<a href="http://chandlerprall.github.io/Physijs/">Physijs</a>.
+
+								Big thanks!
+							</p>
+
+							<h3>Credits:</h3>
+							<h4>Background image</h4>
+							<ul>
+								<li>Kvenh - http://veikkasomerma.com/</li>
+							</ul>
+
+							<h4>Software</h4>
+							<ul>
+								<li>Blender - http://www.blender.org/</li>
+								<li>Three.js - http://threejs.org/</li>
+								<li>Physijs - http://chandlerprall.github.io/Physijs/</li>
+								<li>jQuery - http://jquery.com/</li>
+							</ul>
+
+							<h4>Textures</h4>
+							<ul>
+								<li>Wood textures - http://webtreatsetc.deviantart.com/</li>
+								<li>Bark textures - http://00angelicdevil00.deviantart.com/</li>
+								<li>Rusty textures - http://sdwhaven.deviantart.com/</li>
+								<li>http://juuichimei.deviantart.com/</li>
+								<li>Other textures - http://pixabay.com/</li>
+							</ul>
+
+							<h4>Shaders</h4>
+							<ul>
+								<li>https://github.com/ashima/webgl-noise</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</body>
+</html>

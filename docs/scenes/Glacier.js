@@ -1,20 +1,21 @@
 "use strict";
-var Example = new Scene("Example Scene #1");
-DemoService.registerScene(Example);
+var Glacier = new Scene("Northern Siberia");
+DemoService.registerScene(Glacier);
 
-Example.init = function()
+Physijs.scripts.worker = '../common/js/physijs/physijs_worker.js';
+Physijs.scripts.ammo = 'ammo.js';
+
+Glacier.init = function()
 {
 	// Scene-specific settings
 	this.settings = {width: 400, height: 300};
-
+	
 	this.createScene();
 
 	// Make the controls and add the object (character) to scene
-	// this.camera = new THREE.PerspectiveCamera(80, Statics.SCREEN_WIDTH / Statics.SCREEN_HEIGHT, 1, 1000);
-	this.camera = new THREE.PerspectiveCamera(80, this.settings.width / this.settings.height, 1, 1000);
-
-	//this.controls = new CharacterControls(this.camera, Character.getMesh(), this.scene);
-	//this.scene.add(this.controls.getObject());
+	this.camera = new THREE.PerspectiveCamera(80, Statics.SCREEN_WIDTH / Statics.SCREEN_HEIGHT, 1, 1000);
+	this.controls = new CharacterControls(this.camera, Character.getMesh(), this.scene);
+	this.scene.add(this.controls.getObject());
 
 	// Add models to the scene
 	var models = ModelService.getModels();
@@ -35,7 +36,7 @@ Example.init = function()
 
 	// Setup interactions
 	InteractionController.setScene(this.scene);
-	//this.controls.onInteract(InteractionController.onInteract);
+	this.controls.onInteract(InteractionController.onInteract);
 
 	// Setup renderer
 	this.renderer = new THREE.WebGLRenderer({ antialias: true, clearAlpha: 1 });
@@ -43,20 +44,24 @@ Example.init = function()
 	this.renderer.setPixelRatio(window.devicePixelRatio);
 	this.renderer.autoClear = true;
 	this.renderer.sortObjects = false;
-	//this.renderer.setSize(Statics.SCREEN_WIDTH, Statics.SCREEN_HEIGHT);
-	this.renderer.setSize(this.settings.width, this.settings.height);
-	this.renderer.shadowMap.enabled = true;
-	this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+	this.renderer.setSize(Statics.SCREEN_WIDTH, Statics.SCREEN_HEIGHT);
+	this.renderer.shadowMapEnabled = true;
+	this.renderer.shadowMapType = THREE.PCFSoftShadowMap;
 
+	// Physijs stuff
+	this.scene.addEventListener("update", this.updatePhysics);
+
+	this.scene.simulate();
 	this.start = new Date();
 	this.state++;
 };
 
 // Create scene and atmosphere
-Example.createScene = function()
+Glacier.createScene = function()
 {
 	// Scene
-	this.scene = new THREE.Scene();
+	this.scene = new Physijs.Scene();
+	this.scene.setGravity(new THREE.Vector3(0, -50, 0));
 	this.scene.fog = new THREE.Fog(0x353355, 0, 750);
 
 	// Lights
@@ -76,26 +81,29 @@ Example.createScene = function()
 	this.scene.add(light);
 };
 
-// @Override - by default scene is fullscreen and resizing the browser will resize the scene to fullscreen
-Example.resize = function() {};
-
 // Render loop
-Example.render = function()
+Glacier.render = function()
 {
-	//this.controls.update();
+	this.scene.simulate(undefined, 2);
+	this.controls.update();
 
 	this.renderer.render(this.scene, this.camera);
 
 	return this.state;
 };
 
-Example.pause = function(paused)
+Glacier.updatePhysics = function()
+{
+	// Physics updated
+};
+
+Glacier.pause = function(paused)
 {
 	this.paused = paused;
-	//this.controls.enabled = !paused;
+	this.controls.enabled = !paused;
 }
 
-Example.unload = function()
+Glacier.unload = function()
 {
 	this.state = 0;
 	this.reset();
