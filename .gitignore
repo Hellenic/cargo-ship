@@ -4,6 +4,6 @@
 build
 lib
 !tools/lib
-!src/lib
+src
 node_modules
 npm-debug.log
