@@ -8,7 +8,7 @@ import DemoScene from '../../src/DemoScene';
 // For release
 //import DemoScene from '../lib/DemoScene';
 
-var cargoship = new DemoScene({}, '../lib/');
+var cargoship = new DemoScene({}, 'lib/');
 
 cargoship.setProperties({
     controls: true,
@@ -19,7 +19,7 @@ cargoship.setProperties({
 });
 
 cargoship.addGenericScript("Physijs", "js/physijs/physi.js", true);
-cargoship.addGenericScript("Triggers", "js/triggers.js", false);
+cargoship.addGenericScript("Triggers", "js/triggers/triggers.js", false);
 
 // Add scene
 cargoship.addScene({

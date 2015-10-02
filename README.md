@@ -2,7 +2,7 @@
 
 Cargo Ship WebGL game / interactive demo built on my [Demoscene Engine](https://github.com/Hellenic/demoscene-engine).
 
-Running version: http://blankpace.net/Demos/Ship/
+Running version: http://blankpace.net/CargoShip/
 
 ## TODOs
  - A lot of modeling

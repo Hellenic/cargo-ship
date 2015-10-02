@@ -54,11 +54,19 @@ const copylib = async () => {
 
 // Copy static files from docs/ into the build/ folder
 const assets = async () => {
-    const files = await fs.getFiles('docs');
+    let files = await fs.getFiles('docs');
 
     for (const file of files) {
-        if (!file.endsWith('.md') && !file.endsWith('.html') && !file.startsWith('css') && !file.startsWith('js')) {
+        if (!file.endsWith('.md') && !file.startsWith('css') && !file.startsWith('js')) {
             await fs.copyFile('docs/' + file, 'build/' + file);
+        }
+    }
+
+    files = await fs.getFiles('docs/js');
+    for (const file of files) {
+        if (file.startsWith('physijs') || file.startsWith('triggers'))
+        {
+            await fs.copyFile('docs/js/' + file, 'build/js/' + file);
         }
     }
 };
