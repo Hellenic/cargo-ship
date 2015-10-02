@@ -2,7 +2,7 @@
 var Glacier = new Scene("Northern Siberia");
 DemoService.registerScene(Glacier);
 
-Physijs.scripts.worker = '../common/js/physijs/physijs_worker.js';
+Physijs.scripts.worker = 'js/physijs/physijs_worker.js';
 Physijs.scripts.ammo = 'ammo.js';
 
 Glacier.init = function()
